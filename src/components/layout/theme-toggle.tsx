@@ -27,8 +27,8 @@ export function ThemeToggle() {
       <Button
         variant="ghost"
         size="icon"
-        className="rounded-full"
-        aria-label="Cambiar tema"
+        className="size-9 rounded-none"
+        aria-label="Theme"
         disabled
       >
         <span className="size-4" />
@@ -43,11 +43,11 @@ export function ThemeToggle() {
       type="button"
       variant="ghost"
       size="icon"
-      className="rounded-full transition-[transform,background-color] duration-200 active:scale-95"
-      aria-label={isDark ? "Activar modo claro" : "Activar modo oscuro"}
+      className="size-9 rounded-none text-muted-foreground transition-opacity duration-500 hover:bg-transparent hover:opacity-70"
+      aria-label={isDark ? "Light mode" : "Dark mode"}
       onClick={() => setTheme(isDark ? "light" : "dark")}
     >
-      {isDark ? <Sun className="size-4" /> : <Moon className="size-4" />}
+      {isDark ? <Sun className="size-[1.05rem]" /> : <Moon className="size-[1.05rem]" />}
     </Button>
   );
 }

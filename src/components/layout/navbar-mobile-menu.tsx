@@ -5,12 +5,9 @@ import { Menu, X } from "lucide-react";
 
 import type { NavItem } from "@/config/navigation";
 import { buttonVariants } from "@/components/ui/button";
-import { Separator } from "@/components/ui/separator";
 import {
   Sheet,
   SheetContent,
-  SheetDescription,
-  SheetHeader,
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
@@ -32,73 +29,66 @@ export function NavbarMobileMenu({
       <SheetTrigger
         className={cn(
           buttonVariants({ variant: "ghost", size: "icon" }),
-          "md:hidden rounded-full transition-[transform,background-color] duration-200 active:scale-95"
+          "md:hidden size-9 rounded-none text-muted-foreground transition-opacity duration-500 hover:bg-transparent hover:opacity-70"
         )}
-        aria-label={open ? "Cerrar menú" : "Abrir menú"}
+        aria-label={open ? "Close menu" : "Open menu"}
         aria-expanded={open}
       >
-        <span className="relative size-5">
+        <span className="relative flex size-5 items-center justify-center">
           <Menu
             className={cn(
-              "absolute inset-0 size-5 transition-[opacity,transform] duration-300 ease-out",
-              open ? "rotate-90 scale-75 opacity-0" : "rotate-0 opacity-100"
+              "absolute size-5 transition-[opacity,transform] duration-700 ease-out",
+              open ? "rotate-90 opacity-0" : "rotate-0 opacity-100"
             )}
           />
           <X
             className={cn(
-              "absolute inset-0 size-5 transition-[opacity,transform] duration-300 ease-out",
-              open ? "rotate-0 opacity-100" : "-rotate-90 scale-75 opacity-0"
+              "absolute size-5 transition-[opacity,transform] duration-700 ease-out",
+              open ? "rotate-0 opacity-100" : "-rotate-90 opacity-0"
             )}
           />
         </span>
       </SheetTrigger>
       <SheetContent
         side="right"
-        className="w-[min(100%,22rem)] border-l border-border/50 bg-background/95 p-0 shadow-2xl backdrop-blur-xl duration-300 data-[ending-style]:duration-200 data-[starting-style]:duration-200 dark:border-white/10 dark:bg-background/90"
+        showCloseButton={false}
+        className={cn(
+          "gap-0 border-0 bg-background/97 p-0 shadow-none backdrop-blur-2xl transition-[opacity,transform] duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]",
+          "data-[side=right]:!inset-x-0 data-[side=right]:!left-0 data-[side=right]:!right-0 data-[side=right]:h-[100dvh] data-[side=right]:!w-screen data-[side=right]:!max-w-none sm:data-[side=right]:!max-w-none",
+          "data-[side=right]:data-ending-style:!translate-x-0 data-[side=right]:data-starting-style:!translate-x-0"
+        )}
       >
-        <SheetHeader className="border-b border-border/50 px-6 py-5 dark:border-white/10">
-          <SheetTitle className="text-left font-heading text-lg font-semibold tracking-tight">
-            Menú
-          </SheetTitle>
-          <SheetDescription className="text-left text-sm text-muted-foreground">
-            Navegación principal de la tienda.
-          </SheetDescription>
-        </SheetHeader>
-        <nav className="flex flex-col px-3 py-4" aria-label="Móvil">
-          {items.map((item, i) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              onClick={() => onOpenChange(false)}
-              className={cn(
-                "rounded-xl px-4 py-3.5 text-[0.9375rem] font-medium text-foreground transition-[transform,background-color,color] duration-200 ease-out active:scale-[0.98]",
-                "hover:bg-muted/60 dark:hover:bg-muted/25",
-                "opacity-0 [animation:nav-drawer-item_0.45s_ease-out_forwards]"
-              )}
-              style={{ animationDelay: `${60 + i * 55}ms` }}
-            >
-              <span className="block">{item.title}</span>
-              {item.description ? (
-                <span className="mt-0.5 block text-xs font-normal text-muted-foreground">
-                  {item.description}
-                </span>
-              ) : null}
-            </Link>
-          ))}
+        <SheetTitle className="sr-only">Navigation</SheetTitle>
+        <nav
+          className="flex min-h-[100dvh] flex-col justify-center px-8 py-16 sm:px-14"
+          aria-label="Mobile"
+        >
+          <ul className="flex flex-col gap-8 sm:gap-10">
+            {items.map((item, i) => (
+              <li
+                key={item.href}
+                className="opacity-0 [animation:nav-drawer-item_0.85s_cubic-bezier(0.22,1,0.36,1)_forwards] motion-reduce:animate-none motion-reduce:opacity-100"
+                style={{ animationDelay: `${100 + i * 70}ms` }}
+              >
+                <Link
+                  href={item.href}
+                  onClick={() => onOpenChange(false)}
+                  className="block font-heading text-[clamp(1.75rem,8vw,3rem)] font-normal tracking-[-0.02em] text-foreground transition-opacity duration-500 hover:opacity-55"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
         </nav>
-        <Separator className="opacity-50 dark:bg-white/10" />
-        <div className="px-4 py-4">
-          <Link
-            href="/tienda"
-            onClick={() => onOpenChange(false)}
-            className={cn(
-              buttonVariants({ variant: "secondary", className: "w-full" }),
-              "transition-[transform,box-shadow] duration-200 active:scale-[0.99]"
-            )}
-          >
-            Ir a la tienda
-          </Link>
-        </div>
+
+        <button
+          type="button"
+          onClick={() => onOpenChange(false)}
+          className="absolute right-6 top-6 font-mono text-[0.625rem] font-medium uppercase tracking-[0.28em] text-muted-foreground transition-opacity duration-500 hover:opacity-70"
+        >
+          Close
+        </button>
       </SheetContent>
     </Sheet>
   );

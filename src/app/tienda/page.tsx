@@ -3,13 +3,12 @@ import type { Metadata } from "next";
 import { getStoreCatalog } from "@/application/catalog/get-store-catalog";
 import { ProductGrid } from "@/features/products";
 import { Container } from "@/components/shared/container";
-import { SectionLabel } from "@/components/shared/section-label";
 import { buildPageMetadata } from "@/lib/seo/metadata";
 
 export const metadata: Metadata = buildPageMetadata({
-  title: "Tienda",
+  title: "Shop",
   description:
-    "Ropa y accesorios ALTU. Catálogo curado — listo para conectar con Supabase u otro backend.",
+    "ALTU shop — curated essentials. Ready to wire to Supabase or your API.",
   path: "/tienda",
 });
 
@@ -17,17 +16,14 @@ export default function StorePage() {
   const products = getStoreCatalog();
 
   return (
-    <Container className="py-16 sm:py-20 lg:py-24">
-      <header className="mb-14 max-w-xl space-y-4 sm:mb-16">
-        <SectionLabel>Tienda</SectionLabel>
-        <h1 className="font-heading text-3xl font-normal tracking-tight sm:text-4xl">
-          Catálogo
+    <Container className="pb-24 pt-28 sm:pb-32 sm:pt-32 lg:pb-40 lg:pt-36">
+      <header className="mb-20 max-w-lg space-y-6 sm:mb-24">
+        <span className="font-mono text-[0.625rem] font-medium uppercase tracking-[0.38em] text-muted-foreground">
+          Shop
+        </span>
+        <h1 className="font-heading text-[clamp(2rem,5vw,3rem)] font-normal tracking-[-0.03em]">
+          All pieces
         </h1>
-        <p className="text-sm leading-relaxed text-muted-foreground sm:text-base">
-          Vista de producto inicial. Sustituye el mock por consultas desde{" "}
-          <code className="font-mono text-xs">services/supabase</code> cuando
-          conectes datos.
-        </p>
       </header>
       <ProductGrid products={products} />
     </Container>

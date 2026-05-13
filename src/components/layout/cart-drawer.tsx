@@ -17,7 +17,6 @@ import {
 } from "@/components/ui/sheet";
 import { cn } from "@/lib/utils";
 
-/** Sustituir por estado global / hook de carrito cuando exista el flujo de compra. */
 const PLACEHOLDER_CART_COUNT = 0;
 
 type CartDrawerProps = {
@@ -32,12 +31,12 @@ export function CartDrawer({ className }: CartDrawerProps) {
     <Sheet>
       <SheetTrigger
         className={cn(
-          "relative inline-flex size-10 items-center justify-center rounded-full text-muted-foreground transition-[color,transform,background-color] duration-200 hover:bg-muted/80 hover:text-foreground active:scale-[0.97]",
+          "relative inline-flex size-10 items-center justify-center rounded-none text-muted-foreground transition-opacity duration-500 hover:bg-transparent hover:opacity-70",
           className
         )}
-        aria-label={hasItems ? `Carrito, ${count} artículos` : "Abrir carrito"}
+        aria-label={hasItems ? `Bag, ${count} items` : "Open bag"}
       >
-        <ShoppingBag className="size-[1.35rem] stroke-[1.5]" />
+        <ShoppingBag className="size-[1.1rem] stroke-[1.25]" />
         {hasItems ? (
           <Badge
             variant="default"
@@ -49,61 +48,62 @@ export function CartDrawer({ className }: CartDrawerProps) {
       </SheetTrigger>
       <SheetContent
         side="right"
-        className="flex w-full flex-col border-l border-border/60 bg-background/95 p-0 backdrop-blur-xl sm:max-w-md"
+        className="flex w-full flex-col border-l border-border/40 bg-background/97 p-0 backdrop-blur-xl sm:max-w-md"
       >
-        <SheetHeader className="border-b border-border/60 px-6 py-5 text-left">
-          <SheetTitle className="font-heading text-lg tracking-tight">
-            Carrito
+        <SheetHeader className="border-b border-border/40 px-8 py-8 text-left">
+          <SheetTitle className="font-heading text-base font-normal tracking-tight">
+            Bag
           </SheetTitle>
-          <SheetDescription className="text-muted-foreground">
-            {siteConfig.name} · compra segura
+          <SheetDescription className="font-mono text-[0.625rem] uppercase tracking-[0.22em] text-muted-foreground">
+            {siteConfig.name}
           </SheetDescription>
         </SheetHeader>
 
-        <div className="flex flex-1 flex-col px-6 py-8">
+        <div className="flex flex-1 flex-col px-8 py-12">
           {!hasItems ? (
-            <div className="flex flex-1 flex-col items-center justify-center gap-6 text-center">
-              <div
-                className="flex size-20 items-center justify-center rounded-2xl border border-dashed border-border/80 bg-muted/30 text-muted-foreground transition-colors duration-300"
+            <div className="flex flex-1 flex-col items-center justify-center gap-10 text-center">
+              <ShoppingBag
+                className="size-12 stroke-[1] text-muted-foreground/40"
                 aria-hidden
-              >
-                <ShoppingBag className="size-9 stroke-[1.25]" />
-              </div>
-              <div className="max-w-[240px] space-y-2">
-                <p className="text-sm font-medium text-foreground">
-                  Tu carrito está vacío
-                </p>
-                <p className="text-xs leading-relaxed text-muted-foreground">
-                  Añade piezas desde la tienda. Las animaciones y el resumen del
-                  pedido aparecerán aquí.
-                </p>
+              />
+              <div className="max-w-[220px] space-y-3">
+                <p className="text-sm font-normal text-foreground">Your bag is empty</p>
               </div>
               <Link
                 href="/tienda"
-                className={cn(buttonVariants({ size: "lg" }), "min-w-[200px]")}
+                className={cn(
+                  buttonVariants({ variant: "outline", size: "lg" }),
+                  "min-w-[180px] rounded-none border-foreground/25 font-mono text-[0.625rem] font-medium uppercase tracking-[0.2em]"
+                )}
               >
-                Ver tienda
+                Shop collection
               </Link>
             </div>
           ) : (
             <ul className="space-y-3 text-sm text-muted-foreground">
-              {/* Lista de líneas cuando exista estado de carrito */}
+              {/* Line items when cart state exists */}
             </ul>
           )}
         </div>
 
         {hasItems ? (
           <>
-            <Separator />
-            <div className="space-y-4 px-6 py-5">
+            <Separator className="bg-border/40" />
+            <div className="space-y-5 px-8 py-6">
               <div className="flex items-center justify-between text-sm">
-                <span className="text-muted-foreground">Subtotal</span>
-                <span className="font-medium tabular-nums text-foreground">
+                <span className="font-mono text-[0.625rem] uppercase tracking-[0.2em] text-muted-foreground">
+                  Subtotal
+                </span>
+                <span className="font-mono text-sm tabular-nums text-foreground">
                   —
                 </span>
               </div>
-              <Button type="button" className="w-full" size="lg">
-                Ir a pagar
+              <Button
+                type="button"
+                className="w-full rounded-none font-mono text-[0.625rem] font-medium uppercase tracking-[0.2em]"
+                size="lg"
+              >
+                Checkout
               </Button>
             </div>
           </>

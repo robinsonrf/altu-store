@@ -5,7 +5,7 @@ import { siteConfig } from "@/config/site";
 export const defaultMetadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
-    default: `${siteConfig.name} — Ropa y accesorios premium`,
+    default: `${siteConfig.name} — Premium essentials`,
     template: `%s · ${siteConfig.name}`,
   },
   description: siteConfig.description,
@@ -20,12 +20,12 @@ export const defaultMetadata: Metadata = {
     locale: "es_CL",
     url: siteConfig.url,
     siteName: siteConfig.name,
-    title: `${siteConfig.name} — Ropa y accesorios premium`,
+    title: `${siteConfig.name} — Premium essentials`,
     description: siteConfig.description,
   },
   twitter: {
     card: "summary_large_image",
-    title: `${siteConfig.name} — Ropa y accesorios premium`,
+    title: `${siteConfig.name} — Premium essentials`,
     description: siteConfig.description,
   },
   robots: {

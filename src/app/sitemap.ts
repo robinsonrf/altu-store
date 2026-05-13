@@ -6,7 +6,12 @@ import { siteConfig } from "@/config/site";
 export default function sitemap(): MetadataRoute.Sitemap {
   const base = siteConfig.url;
 
-  const staticRoutes: MetadataRoute.Sitemap = ["", "/tienda"].map((path) => ({
+  const staticRoutes: MetadataRoute.Sitemap = [
+    "",
+    "/tienda",
+    "/collections",
+    "/about",
+  ].map((path) => ({
     url: `${base}${path === "" ? "/" : path}`,
     lastModified: new Date(),
     changeFrequency: "weekly",

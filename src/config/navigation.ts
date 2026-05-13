@@ -1,45 +1,38 @@
+import { siteConfig } from "@/config/site";
+
 export type NavItem = {
   title: string;
   href: string;
-  description?: string;
 };
 
+/** Navegación principal — deliberadamente escasa (marca premium). */
 export const mainNav: NavItem[] = [
-  { title: "Inicio", href: "/" },
-  { title: "Tienda", href: "/tienda", description: "Todo el catálogo" },
-  {
-    title: "Novedades",
-    href: "/tienda?coleccion=novedades",
-    description: "Últimos ingresos",
-  },
-  {
-    title: "Accesorios",
-    href: "/tienda?categoria=accesorios",
-    description: "Complementos y detalles",
-  },
+  { title: "Home", href: "/" },
+  { title: "Shop", href: "/tienda" },
+  { title: "Collections", href: "/collections" },
+  { title: "About", href: "/about" },
 ];
 
-export const footerNav: { title: string; items: NavItem[] }[] = [
+export type FooterColumn = {
+  title: string;
+  items: NavItem[];
+};
+
+export const footerColumns: FooterColumn[] = [
   {
-    title: "Comprar",
+    title: "Navigation",
     items: [
-      { title: "Tienda", href: "/tienda" },
-      { title: "Guía de tallas", href: "/guia-de-tallas" },
-      { title: "Envíos y devoluciones", href: "/envios" },
+      { title: "Shop", href: "/tienda" },
+      { title: "Collections", href: "/collections" },
+      { title: "About", href: "/about" },
     ],
   },
   {
-    title: "Altu",
-    items: [
-      { title: "Sobre nosotros", href: "/sobre-altu" },
-      { title: "Contacto", href: "/contacto" },
-    ],
+    title: "Social",
+    items: [{ title: "Instagram", href: siteConfig.links.instagram }],
   },
   {
-    title: "Legal",
-    items: [
-      { title: "Términos y condiciones", href: "/terminos" },
-      { title: "Privacidad", href: "/privacidad" },
-    ],
+    title: "Contact",
+    items: [{ title: siteConfig.contact.email, href: `mailto:${siteConfig.contact.email}` }],
   },
 ];

@@ -137,7 +137,7 @@
 
 @layer utilities {
   .altu-reveal {
-    animation: altu-fade-up 0.65s var(--altu-ease-out) both;
+    animation: altu-fade-up 1s var(--altu-ease-out) both;
   }
   @media (prefers-reduced-motion: reduce) {
     .altu-reveal {

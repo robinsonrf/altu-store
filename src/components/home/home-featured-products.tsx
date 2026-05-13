@@ -3,7 +3,6 @@ import Link from "next/link";
 import type { Product } from "@/domain/product";
 import { ProductGrid } from "@/features/products";
 import { Container } from "@/components/shared/container";
-import { SectionLabel } from "@/components/shared/section-label";
 import { cn } from "@/lib/utils";
 
 type HomeFeaturedProductsProps = {
@@ -12,32 +11,30 @@ type HomeFeaturedProductsProps = {
 
 export function HomeFeaturedProducts({ products }: HomeFeaturedProductsProps) {
   return (
-    <section className="bg-muted/20">
-      <Container className="py-20 sm:py-24 lg:py-28">
-        <header className="mb-14 flex flex-col justify-between gap-8 border-b border-border/50 pb-14 sm:mb-16 sm:flex-row sm:items-end sm:pb-16">
-          <div className="max-w-lg space-y-4">
-            <SectionLabel>Selección</SectionLabel>
-            <h2 className="font-heading text-3xl font-normal tracking-tight sm:text-4xl">
-              Destacados
+    <section className="bg-background">
+      <Container className="py-24 sm:py-32 lg:py-40">
+        <header className="mb-20 flex flex-col gap-10 border-b border-border/35 pb-16 sm:mb-24 sm:flex-row sm:items-end sm:justify-between sm:pb-20">
+          <div className="space-y-4">
+            <span className="font-mono text-[0.625rem] font-medium uppercase tracking-[0.38em] text-muted-foreground">
+              Featured
+            </span>
+            <h2 className="font-heading text-[clamp(1.75rem,4vw,2.75rem)] font-normal tracking-[-0.02em] text-foreground">
+              Selection
             </h2>
-            <p className="text-sm leading-relaxed text-muted-foreground sm:text-[0.9375rem]">
-              Piezas de referencia. El catálogo completo vive en tienda.
-            </p>
           </div>
           <Link
             href="/tienda"
             className={cn(
-              "inline-flex h-11 shrink-0 items-center justify-center border border-border bg-background px-6 text-sm font-medium transition-[background-color,transform,border-color] duration-300 hover:bg-muted/60",
-              "rounded-none active:scale-[0.99]"
+              "font-mono text-[0.625rem] font-medium uppercase tracking-[0.22em] text-muted-foreground transition-opacity duration-500 hover:opacity-70"
             )}
           >
-            Ver todo
+            Shop all
           </Link>
         </header>
 
         <ProductGrid
           products={products}
-          className="gap-x-6 gap-y-12 sm:grid-cols-2 lg:grid-cols-4"
+          className="gap-x-8 gap-y-16 sm:grid-cols-2 lg:grid-cols-4"
         />
       </Container>
     </section>

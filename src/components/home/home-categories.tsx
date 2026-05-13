@@ -3,35 +3,31 @@ import Link from "next/link";
 
 import { featuredCategories } from "@/features/home/data";
 import { Container } from "@/components/shared/container";
-import { SectionLabel } from "@/components/shared/section-label";
 import { cn } from "@/lib/utils";
 
 export function HomeCategories() {
   return (
-    <section className="border-y border-border/60 bg-background">
-      <Container className="py-20 sm:py-24 lg:py-28">
-        <header className="mb-14 flex flex-col justify-between gap-6 sm:mb-16 md:flex-row md:items-end">
-          <div className="max-w-md space-y-4 motion-safe:altu-reveal">
-            <SectionLabel>Categorías</SectionLabel>
-            <h2 className="font-heading text-3xl font-normal tracking-tight text-foreground sm:text-4xl">
-              Curadas con criterio
-            </h2>
-          </div>
+    <section className="border-y border-border/40 bg-background">
+      <Container className="py-24 sm:py-32 lg:py-40">
+        <header className="mb-16 flex items-end justify-between gap-8 sm:mb-20 lg:mb-28">
+          <span className="font-mono text-[0.625rem] font-medium uppercase tracking-[0.38em] text-muted-foreground">
+            Categories
+          </span>
           <Link
             href="/tienda"
-            className="shrink-0 text-sm font-medium text-muted-foreground underline-offset-[10px] transition-colors duration-300 hover:text-foreground hover:underline"
+            className="font-mono text-[0.625rem] font-medium uppercase tracking-[0.22em] text-muted-foreground transition-opacity duration-500 hover:opacity-70"
           >
-            Ver catálogo
+            Shop all
           </Link>
         </header>
 
-        <div className="grid grid-cols-1 gap-px bg-border sm:grid-cols-2 lg:grid-cols-4 lg:grid-rows-2">
+        <div className="grid grid-cols-1 gap-px bg-border/60 sm:grid-cols-2 lg:grid-cols-4 lg:grid-rows-2">
           {featuredCategories.map((cat, index) => {
             const placement = [
-              "lg:col-span-2 lg:row-span-2 lg:col-start-1 lg:row-start-1 lg:min-h-[26rem]",
-              "lg:col-span-2 lg:col-start-3 lg:row-start-1 lg:min-h-[12.5rem]",
-              "lg:col-span-1 lg:col-start-3 lg:row-start-2 lg:min-h-[12.5rem]",
-              "lg:col-span-1 lg:col-start-4 lg:row-start-2 lg:min-h-[12.5rem]",
+              "lg:col-span-2 lg:row-span-2 lg:col-start-1 lg:row-start-1 lg:min-h-[min(32rem,70vh)]",
+              "lg:col-span-2 lg:col-start-3 lg:row-start-1 lg:min-h-[min(15rem,28vh)]",
+              "lg:col-span-1 lg:col-start-3 lg:row-start-2 lg:min-h-[min(15rem,28vh)]",
+              "lg:col-span-1 lg:col-start-4 lg:row-start-2 lg:min-h-[min(15rem,28vh)]",
             ] as const;
             const isHero = index === 0;
             return (
@@ -39,7 +35,7 @@ export function HomeCategories() {
                 key={cat.href}
                 href={cat.href}
                 className={cn(
-                  "group relative isolate min-h-[13rem] overflow-hidden bg-background outline-none transition-[background-color] duration-300 focus-visible:ring-2 focus-visible:ring-foreground focus-visible:ring-offset-2 sm:min-h-[15rem]",
+                  "group relative isolate min-h-[min(18rem,55vh)] overflow-hidden bg-background outline-none transition-opacity duration-700 focus-visible:ring-1 focus-visible:ring-foreground focus-visible:ring-offset-4 focus-visible:ring-offset-background sm:min-h-[20rem]",
                   placement[index]
                 )}
               >
@@ -52,17 +48,14 @@ export function HomeCategories() {
                       ? "(max-width: 1024px) 100vw, 50vw"
                       : "(max-width: 1024px) 50vw, 25vw"
                   }
-                  className="object-cover transition-[transform,opacity] duration-700 ease-out motion-reduce:transition-none group-hover:scale-[1.03] group-hover:opacity-95"
+                  className="object-cover transition-[transform,filter] duration-[1100ms] ease-out motion-reduce:transition-none group-hover:scale-[1.02]"
                 />
                 <div
-                  className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent transition-opacity duration-500 group-hover:from-black/85"
+                  className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/75 via-black/15 to-transparent transition-opacity duration-700 group-hover:from-black/82"
                   aria-hidden
                 />
-                <div className="absolute inset-x-0 bottom-0 z-10 p-6 sm:p-8">
-                  <p className="font-mono text-[0.6rem] uppercase tracking-[0.32em] text-white/60">
-                    {cat.tagline}
-                  </p>
-                  <p className="mt-1 font-heading text-2xl font-normal tracking-tight text-white sm:text-3xl">
+                <div className="absolute inset-x-0 bottom-0 z-10 p-7 sm:p-9 lg:p-10">
+                  <p className="font-heading text-[clamp(1.5rem,4vw,2.75rem)] font-normal tracking-[-0.02em] text-white">
                     {cat.title}
                   </p>
                 </div>

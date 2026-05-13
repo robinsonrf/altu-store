@@ -1,0 +1,25 @@
+/**
+ * ALTU — tokens de marca (monocromo + acento mínimo).
+ */
+:root {
+  --altu-accent: oklch(0.42 0.02 260);
+  --altu-accent-foreground: oklch(0.99 0 0);
+  --altu-container: 80rem;
+  --altu-ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.dark {
+  --altu-accent: oklch(0.78 0.02 260);
+  --altu-accent-foreground: oklch(0.12 0 0);
+}
+
+@keyframes altu-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(0.75rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

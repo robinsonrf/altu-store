@@ -2,6 +2,7 @@ import Link from "next/link";
 
 import { footerNav } from "@/config/navigation";
 import { siteConfig } from "@/config/site";
+import { Container } from "@/components/shared/container";
 import { Separator } from "@/components/ui/separator";
 
 export function SiteFooter() {
@@ -9,10 +10,10 @@ export function SiteFooter() {
 
   return (
     <footer className="border-t border-neutral-800 bg-neutral-950 text-neutral-100 transition-colors duration-300 dark:border-white/10">
-      <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 sm:py-16 lg:px-10 lg:py-20">
-        <div className="grid gap-12 lg:grid-cols-12 lg:gap-10">
+      <Container className="py-16 sm:py-20 lg:py-24">
+        <div className="grid gap-14 lg:grid-cols-12 lg:gap-12">
           <div className="lg:col-span-4">
-            <p className="font-heading text-xl font-semibold tracking-tight">
+            <p className="font-heading text-2xl font-normal tracking-tight">
               {siteConfig.name}
             </p>
             <p className="mt-4 max-w-sm text-pretty text-sm leading-relaxed text-neutral-400">
@@ -80,7 +81,7 @@ export function SiteFooter() {
             </span>
           </div>
         </div>
-      </div>
+      </Container>
     </footer>
   );
 }

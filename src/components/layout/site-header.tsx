@@ -34,8 +34,8 @@ function LogoPlaceholder() {
         className="relative flex size-10 shrink-0 items-center justify-center overflow-hidden rounded-md border border-border/60 bg-muted/40 shadow-sm transition-[border-color,box-shadow,transform] duration-300 ease-out group-hover:border-border group-hover:shadow-md dark:border-white/10 dark:bg-muted/20"
         aria-hidden
       >
-        <span className="text-[0.6rem] font-semibold uppercase tracking-[0.22em] text-muted-foreground transition-colors duration-300 group-hover:text-foreground">
-          Logo
+        <span className="text-[0.55rem] font-semibold tracking-[0.18em] text-muted-foreground transition-colors duration-300 group-hover:text-foreground">
+          A
         </span>
       </span>
       <span className="hidden min-[420px]:flex flex-col leading-none">

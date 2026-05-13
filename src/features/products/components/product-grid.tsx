@@ -1,6 +1,6 @@
 import type { Product } from "@/domain/product";
 
-import { ProductCard } from "@/components/product/product-card";
+import { ProductCard } from "@/features/products/components/product-card";
 import { cn } from "@/lib/utils";
 
 type ProductGridProps = {
@@ -11,12 +11,12 @@ type ProductGridProps = {
 
 export function ProductGrid({
   products,
-  emptyLabel = "Pronto tendremos más piezas por aquí.",
+  emptyLabel = "Catálogo en preparación.",
   className,
 }: ProductGridProps) {
   if (products.length === 0) {
     return (
-      <p className="rounded-xl border border-dashed border-border bg-muted/40 px-4 py-12 text-center text-sm text-muted-foreground">
+      <p className="border border-dashed border-border/60 py-16 text-center text-sm text-muted-foreground">
         {emptyLabel}
       </p>
     );
@@ -25,12 +25,12 @@ export function ProductGrid({
   return (
     <ul
       className={cn(
-        "grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4",
+        "grid grid-cols-1 gap-x-8 gap-y-14 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4",
         className
       )}
     >
       {products.map((product) => (
-        <li key={product.id} className="group">
+        <li key={product.id}>
           <ProductCard product={product} />
         </li>
       ))}

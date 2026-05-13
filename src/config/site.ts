@@ -1,21 +1,20 @@
 export const siteConfig = {
-  name: "Altu",
+  name: "ALTU",
   domain: "altu.cl",
   get url() {
     return `https://${this.domain}` as const;
   },
   defaultLocale: "es-CL" as const,
   description:
-    "Streetwear y accesorios curados en Chile. Drops, siluetas urbanas y envíos a todo el país.",
+    "Marca premium de ropa y accesorios. Siluetas limpias, materiales honestos y envíos a todo Chile.",
   keywords: [
+    "ALTU",
     "Altu",
     "moda Chile",
-    "ropa",
+    "ropa premium",
     "accesorios",
-    "tienda online Chile",
     "altu.cl",
   ],
-  /** SEO local: región principal de negocio */
   geo: {
     region: "CL-RM",
     placename: "Santiago",

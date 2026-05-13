@@ -3,9 +3,10 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import { Container } from "@/components/shared/container";
+import { ProductJsonLd } from "@/components/seo/product-json-ld";
 import { ProductDetail } from "@/features/products";
 import { getProductBySlug, listProducts } from "@/infrastructure/catalog/catalog-repository";
-import { buildPageMetadata } from "@/lib/seo/metadata";
+import { buildProductMetadata } from "@/lib/seo/metadata";
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -22,11 +23,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!product) {
     return {};
   }
-  return buildPageMetadata({
-    title: product.name,
-    description: product.shortDescription,
-    path: `/producto/${product.slug}`,
-  });
+  return buildProductMetadata(product);
 }
 
 export default async function ProductPage({ params }: Props) {
@@ -39,6 +36,7 @@ export default async function ProductPage({ params }: Props) {
   return (
     <Container className="pb-28 pt-28 sm:pb-36 sm:pt-32 lg:pb-40 lg:pt-36">
       <article>
+        <ProductJsonLd product={product} />
         <Link
           href="/tienda"
           className="inline-block font-mono text-[0.625rem] font-medium uppercase tracking-[0.28em] text-muted-foreground transition-opacity duration-500 hover:opacity-55"

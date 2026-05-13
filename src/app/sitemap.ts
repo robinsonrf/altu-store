@@ -1,10 +1,11 @@
 import type { MetadataRoute } from "next";
 
-import { mockProducts } from "@/infrastructure/catalog/mock-products";
 import { siteConfig } from "@/config/site";
+import { listProducts } from "@/infrastructure/catalog/catalog-repository";
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const base = siteConfig.url;
+  const products = await listProducts();
 
   const staticRoutes: MetadataRoute.Sitemap = [
     "",
@@ -18,9 +19,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: path === "" ? 1 : 0.8,
   }));
 
-  const productRoutes: MetadataRoute.Sitemap = mockProducts.map((p) => ({
+  const productRoutes: MetadataRoute.Sitemap = products.map((p) => ({
     url: `${base}/producto/${p.slug}`,
-    lastModified: new Date(),
+    lastModified: p.createdAt ? new Date(p.createdAt) : new Date(),
     changeFrequency: "weekly",
     priority: 0.6,
   }));

@@ -37,12 +37,12 @@ export function CatalogFilters({ products, currentFilters }: CatalogFiltersProps
   );
 
   const filterClass =
-    "rounded-none border border-border/50 px-4 py-2 font-mono text-[0.625rem] uppercase tracking-[0.22em] transition-colors duration-500 hover:border-foreground/40";
+    "rounded-none border border-border/40 px-4 py-2.5 font-mono text-[0.625rem] uppercase tracking-[0.22em] transition-[border-color,opacity] duration-500 hover:border-foreground/35 hover:opacity-90";
   const activeClass = "border-foreground/45 bg-foreground/5 text-foreground";
   const inactiveClass = "text-muted-foreground";
 
   return (
-    <div className="mb-14 space-y-8 sm:mb-16">
+    <div className="mb-16 space-y-8 sm:mb-20">
       <div className="flex items-center justify-between gap-4">
         <h2 className="font-mono text-[0.625rem] font-medium uppercase tracking-[0.28em] text-muted-foreground">
           Filtros
@@ -56,7 +56,7 @@ export function CatalogFilters({ products, currentFilters }: CatalogFiltersProps
       </div>
 
       <div className="space-y-6">
-        <div className="flex gap-3 overflow-x-auto pb-2">
+        <div className="flex gap-3 overflow-x-auto pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
           {categories.map((category) => {
             const active = currentFilters.category === category;
             return (
@@ -71,7 +71,7 @@ export function CatalogFilters({ products, currentFilters }: CatalogFiltersProps
           })}
         </div>
 
-        <div className="flex gap-3 overflow-x-auto pb-2">
+        <div className="flex gap-3 overflow-x-auto pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
           {sizes.map((size) => {
             const active = currentFilters.size === size;
             return (
@@ -86,7 +86,7 @@ export function CatalogFilters({ products, currentFilters }: CatalogFiltersProps
           })}
         </div>
 
-        <div className="flex gap-3 overflow-x-auto pb-2">
+        <div className="flex gap-3 overflow-x-auto pb-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
           {colors.map((color) => {
             const active = currentFilters.color === color;
             return (

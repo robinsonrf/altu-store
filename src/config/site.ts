@@ -21,9 +21,9 @@ export const siteConfig = {
     position: "-33.4489;-70.6693",
   },
   links: {
-    instagram: "https://instagram.com/altu.cl",
+    instagram: "https://instagram.com/altu_cl",
   },
   contact: {
-    email: "hola@altu.cl",
+    email: "ventas@altu.cl",
   },
 } as const;

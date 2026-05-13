@@ -25,7 +25,7 @@ export function ProductGrid({
   return (
     <ul
       className={cn(
-        "grid grid-cols-1 gap-x-8 gap-y-14 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4",
+        "grid grid-cols-1 gap-x-7 gap-y-12 sm:grid-cols-2 sm:gap-x-8 sm:gap-y-14 lg:grid-cols-3 lg:gap-x-9 lg:gap-y-16 xl:grid-cols-4",
         className
       )}
     >

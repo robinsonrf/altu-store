@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 
 import { getStoreCatalog } from "@/application/catalog/get-store-catalog";
+import { CatalogJsonLd } from "@/components/seo/catalog-json-ld";
 import { CatalogFilters, ProductGrid } from "@/features/products";
 import { Container } from "@/components/shared/container";
 import { parseStoreFilters } from "@/features/products/application/parse-store-filters";
@@ -24,8 +25,9 @@ export default async function StorePage({ searchParams }: Props) {
   const allProducts = await getStoreCatalog();
 
   return (
-    <Container className="pb-24 pt-28 sm:pb-32 sm:pt-32 lg:pb-40 lg:pt-36">
-      <header className="mb-20 max-w-lg space-y-6 sm:mb-24">
+    <Container className="pb-24 pt-28 sm:pb-32 sm:pt-32 lg:pb-44 lg:pt-36">
+      <CatalogJsonLd products={products} />
+      <header className="mb-20 max-w-xl space-y-6 sm:mb-24">
         <span className="font-mono text-[0.625rem] font-medium uppercase tracking-[0.38em] text-muted-foreground">
           Shop
         </span>
@@ -34,7 +36,7 @@ export default async function StorePage({ searchParams }: Props) {
         </h1>
       </header>
       <CatalogFilters products={allProducts} currentFilters={filters} />
-      <ProductGrid products={products} />
+      <ProductGrid products={products} className="pb-2" />
     </Container>
   );
 }

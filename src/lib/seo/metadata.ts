@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 
 import { siteConfig } from "@/config/site";
+import type { Product } from "@/domain/product";
 
 export const defaultMetadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
@@ -67,6 +68,37 @@ export function buildPageMetadata({
     twitter: {
       title,
       description,
+    },
+  };
+}
+
+export function buildProductMetadata(product: Product): Metadata {
+  const canonical = new URL(`/producto/${product.slug}`, siteConfig.url).toString();
+  const primaryImage = product.images.find((image) => image.isPrimary) ?? product.images[0];
+
+  return {
+    title: product.name,
+    description: product.shortDescription || product.description,
+    alternates: { canonical },
+    openGraph: {
+      type: "website",
+      url: canonical,
+      title: product.name,
+      description: product.shortDescription || product.description,
+      images: primaryImage
+        ? [
+            {
+              url: primaryImage.url,
+              alt: primaryImage.alt,
+            },
+          ]
+        : undefined,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: product.name,
+      description: product.shortDescription || product.description,
+      images: primaryImage ? [primaryImage.url] : undefined,
     },
   };
 }

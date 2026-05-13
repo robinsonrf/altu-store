@@ -4,6 +4,7 @@ import { Geist, Geist_Mono, Instrument_Serif } from "next/font/google";
 import { StoreLayout } from "@/components/layout/store-layout";
 import { ThemeProvider } from "@/components/providers/theme-provider";
 import { JsonLd } from "@/components/seo/json-ld";
+import { CartProvider } from "@/features/cart";
 import { defaultMetadata } from "@/lib/seo/metadata";
 
 import "./globals.css";
@@ -49,8 +50,10 @@ export default function RootLayout({
     >
       <body className="flex min-h-full flex-col font-sans">
         <ThemeProvider>
-          <JsonLd />
-          <StoreLayout>{children}</StoreLayout>
+          <CartProvider>
+            <JsonLd />
+            <StoreLayout>{children}</StoreLayout>
+          </CartProvider>
         </ThemeProvider>
       </body>
     </html>

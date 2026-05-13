@@ -31,7 +31,7 @@ export function NavbarMobileMenu({
           buttonVariants({ variant: "ghost", size: "icon" }),
           "md:hidden size-9 rounded-none text-muted-foreground transition-opacity duration-500 hover:bg-transparent hover:opacity-70"
         )}
-        aria-label={open ? "Close menu" : "Open menu"}
+        aria-label={open ? "Cerrar menú" : "Abrir menú"}
         aria-expanded={open}
       >
         <span className="relative flex size-5 items-center justify-center">
@@ -58,10 +58,10 @@ export function NavbarMobileMenu({
           "data-[side=right]:data-ending-style:!translate-x-0 data-[side=right]:data-starting-style:!translate-x-0"
         )}
       >
-        <SheetTitle className="sr-only">Navigation</SheetTitle>
+        <SheetTitle className="sr-only">Navegación</SheetTitle>
         <nav
-          className="flex min-h-[100dvh] flex-col justify-center px-8 py-16 sm:px-14"
-          aria-label="Mobile"
+          className="flex min-h-[100dvh] flex-col justify-center px-10 py-20 sm:px-16"
+          aria-label="Navegación móvil"
         >
           <ul className="flex flex-col gap-8 sm:gap-10">
             {items.map((item, i) => (
@@ -87,7 +87,7 @@ export function NavbarMobileMenu({
           onClick={() => onOpenChange(false)}
           className="absolute right-6 top-6 font-mono text-[0.625rem] font-medium uppercase tracking-[0.28em] text-muted-foreground transition-opacity duration-500 hover:opacity-70"
         >
-          Close
+          Cerrar
         </button>
       </SheetContent>
     </Sheet>

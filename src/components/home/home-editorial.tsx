@@ -24,8 +24,8 @@ export function HomeEditorial() {
           />
         </div>
 
-        <Container className="flex flex-1 flex-col justify-center py-20 sm:py-28 lg:order-1 lg:max-w-none lg:w-[42%] lg:py-0 lg:pr-16">
-          <div className="mx-auto w-full max-w-md lg:mx-0 lg:max-w-lg lg:translate-y-[6%]">
+        <Container className="flex flex-1 flex-col justify-center py-24 sm:py-32 lg:order-1 lg:max-w-none lg:w-[42%] lg:py-0 lg:pr-20">
+          <div className="mx-auto w-full max-w-md lg:mx-0 lg:max-w-lg lg:translate-y-[10%]">
             <h2 className="font-heading text-[clamp(2rem,5vw,3.25rem)] font-normal leading-[1.08] tracking-[-0.03em] text-foreground">
               {editorialFeature.title}
             </h2>

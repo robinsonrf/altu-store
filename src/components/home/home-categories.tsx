@@ -8,16 +8,16 @@ import { cn } from "@/lib/utils";
 export function HomeCategories() {
   return (
     <section className="border-y border-border/40 bg-background">
-      <Container className="py-24 sm:py-32 lg:py-40">
-        <header className="mb-16 flex items-end justify-between gap-8 sm:mb-20 lg:mb-28">
+      <Container className="py-28 sm:py-36 lg:py-44">
+        <header className="mb-20 flex items-end justify-between gap-8 sm:mb-24 lg:mb-32">
           <span className="font-mono text-[0.625rem] font-medium uppercase tracking-[0.38em] text-muted-foreground">
-            Categories
+            Categorías
           </span>
           <Link
             href="/tienda"
             className="font-mono text-[0.625rem] font-medium uppercase tracking-[0.22em] text-muted-foreground transition-opacity duration-500 hover:opacity-70"
           >
-            Shop all
+            Ver todo
           </Link>
         </header>
 
@@ -48,7 +48,7 @@ export function HomeCategories() {
                       ? "(max-width: 1024px) 100vw, 50vw"
                       : "(max-width: 1024px) 50vw, 25vw"
                   }
-                  className="object-cover transition-[transform,filter] duration-[1100ms] ease-out motion-reduce:transition-none group-hover:scale-[1.02]"
+                  className="object-cover transition-[transform,filter] duration-[1400ms] ease-out motion-reduce:transition-none group-hover:scale-[1.025] group-hover:brightness-[1.02]"
                 />
                 <div
                   className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/75 via-black/15 to-transparent transition-opacity duration-700 group-hover:from-black/82"

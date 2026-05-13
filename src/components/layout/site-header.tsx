@@ -28,7 +28,7 @@ function LogoMonogram() {
     <Link
       href="/"
       className="group flex items-center gap-2.5 outline-none transition-opacity duration-500 ease-out hover:opacity-80 focus-visible:ring-1 focus-visible:ring-foreground/40 focus-visible:ring-offset-2 focus-visible:ring-offset-transparent"
-      aria-label={`${siteConfig.name} — home`}
+      aria-label={`${siteConfig.name} — inicio`}
     >
       <span
         className="flex size-8 items-center justify-center border border-foreground/15 bg-transparent transition-[border-color] duration-500 group-hover:border-foreground/30"
@@ -68,8 +68,11 @@ function NavLink({
       href={href}
       onClick={onNavigate}
       className={cn(
-        "relative py-1 font-mono text-[0.625rem] font-medium uppercase tracking-[0.22em] transition-colors duration-500 ease-out",
-        active ? "text-foreground" : "text-muted-foreground hover:text-foreground",
+        "relative py-1 font-mono text-[0.625rem] font-medium uppercase tracking-[0.22em] transition-[opacity,color] duration-500 ease-out",
+        "after:absolute after:inset-x-0 after:-bottom-1 after:h-px after:origin-center after:scale-x-0 after:bg-foreground/70 after:transition-transform after:duration-500 after:ease-out",
+        active
+          ? "text-foreground after:scale-x-100"
+          : "text-muted-foreground hover:text-foreground hover:opacity-90 hover:after:scale-x-100",
         className
       )}
     >
@@ -102,12 +105,12 @@ export function SiteHeader({ className }: SiteHeaderProps) {
       className={cn(
         "fixed inset-x-0 top-0 z-50 border-b transition-[border-color,background-color,backdrop-filter] duration-700 ease-[cubic-bezier(0.22,1,0.36,1)]",
         scrolled
-          ? "border-border/25 bg-background/72 backdrop-blur-xl backdrop-saturate-150 dark:border-white/[0.08] dark:bg-background/65"
+          ? "border-border/25 bg-background/66 backdrop-blur-2xl backdrop-saturate-150 dark:border-white/[0.08] dark:bg-background/58"
           : "border-transparent bg-transparent",
         className
       )}
     >
-      <div className="mx-auto flex h-11 max-w-[var(--altu-container,80rem)] items-center justify-between gap-6 px-5 sm:h-12 sm:px-8 lg:px-12">
+      <div className="mx-auto flex h-10 max-w-[var(--altu-container,80rem)] items-center justify-between gap-6 px-5 sm:h-11 sm:px-8 lg:px-12">
         <LogoMonogram />
 
         <nav

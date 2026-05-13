@@ -7,10 +7,10 @@ export type NavItem = {
 
 /** Navegación principal — deliberadamente escasa (marca premium). */
 export const mainNav: NavItem[] = [
-  { title: "Home", href: "/" },
+  { title: "Inicio", href: "/" },
   { title: "Shop", href: "/tienda" },
-  { title: "Collections", href: "/collections" },
-  { title: "About", href: "/about" },
+  { title: "Colecciones", href: "/collections" },
+  { title: "Sobre ALTU", href: "/about" },
 ];
 
 export type FooterColumn = {
@@ -23,8 +23,8 @@ export const footerColumns: FooterColumn[] = [
     title: "Navigation",
     items: [
       { title: "Shop", href: "/tienda" },
-      { title: "Collections", href: "/collections" },
-      { title: "About", href: "/about" },
+      { title: "Colecciones", href: "/collections" },
+      { title: "Sobre ALTU", href: "/about" },
     ],
   },
   {

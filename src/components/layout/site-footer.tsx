@@ -9,7 +9,7 @@ export function SiteFooter() {
 
   return (
     <footer className="border-t border-border/40 bg-background">
-      <Container className="py-24 sm:py-32 lg:py-40">
+      <Container className="py-28 sm:py-36 lg:py-44">
         <div className="grid gap-16 sm:grid-cols-3 sm:gap-12 lg:gap-16">
           {footerColumns.map((col) => (
             <div key={col.title}>
@@ -43,6 +43,9 @@ export function SiteFooter() {
             © {year} · {siteConfig.domain}
           </p>
         </div>
+        <p className="mt-8 font-mono text-[0.625rem] uppercase tracking-[0.24em] text-muted-foreground/80">
+          Diseñado en Chile.
+        </p>
       </Container>
     </footer>
   );

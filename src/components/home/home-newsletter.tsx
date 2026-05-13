@@ -27,13 +27,13 @@ export function HomeNewsletter() {
 
   return (
     <section className="border-t border-border/40 bg-muted/15">
-      <Container className="py-24 sm:py-32 lg:py-40">
+      <Container className="py-28 sm:py-36 lg:py-44">
         <div className="mx-auto max-w-xl">
           <h2 className="font-heading text-2xl font-normal tracking-[-0.02em] text-foreground sm:text-3xl">
-            Join the community.
+            Únete a la comunidad.
           </h2>
           <p className="mt-5 text-sm leading-relaxed text-muted-foreground">
-            Get early access to new collections and releases.
+            Acceso anticipado a nuevas colecciones y lanzamientos.
           </p>
 
           <form
@@ -45,7 +45,7 @@ export function HomeNewsletter() {
               name="email"
               required
               autoComplete="email"
-              placeholder="Email"
+              placeholder="Correo electrónico"
               disabled={status === "loading"}
               className={cn(
                 "h-12 flex-1 rounded-none border-border/80 bg-transparent text-base sm:text-sm",
@@ -62,8 +62,8 @@ export function HomeNewsletter() {
               {status === "loading"
                 ? "…"
                 : status === "success"
-                  ? "Done"
-                  : "Submit"}
+                  ? "Listo"
+                  : "Suscribirse"}
             </Button>
           </form>
         </div>

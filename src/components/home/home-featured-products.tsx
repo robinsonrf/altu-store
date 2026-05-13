@@ -12,14 +12,14 @@ type HomeFeaturedProductsProps = {
 export function HomeFeaturedProducts({ products }: HomeFeaturedProductsProps) {
   return (
     <section className="bg-background">
-      <Container className="py-24 sm:py-32 lg:py-40">
-        <header className="mb-20 flex flex-col gap-10 border-b border-border/35 pb-16 sm:mb-24 sm:flex-row sm:items-end sm:justify-between sm:pb-20">
+      <Container className="py-28 sm:py-36 lg:py-44">
+        <header className="mb-24 flex flex-col gap-10 border-b border-border/35 pb-16 sm:mb-28 sm:flex-row sm:items-end sm:justify-between sm:pb-20">
           <div className="space-y-4">
             <span className="font-mono text-[0.625rem] font-medium uppercase tracking-[0.38em] text-muted-foreground">
-              Featured
+              Drop
             </span>
             <h2 className="font-heading text-[clamp(1.75rem,4vw,2.75rem)] font-normal tracking-[-0.02em] text-foreground">
-              Selection
+              Selección
             </h2>
           </div>
           <Link
@@ -28,7 +28,7 @@ export function HomeFeaturedProducts({ products }: HomeFeaturedProductsProps) {
               "font-mono text-[0.625rem] font-medium uppercase tracking-[0.22em] text-muted-foreground transition-opacity duration-500 hover:opacity-70"
             )}
           >
-            Shop all
+            Ver todo
           </Link>
         </header>
 

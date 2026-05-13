@@ -6,7 +6,7 @@ export const siteConfig = {
   },
   defaultLocale: "es-CL" as const,
   description:
-    "Premium essentials for movement. Contemporary silhouettes, disciplined design.",
+    "Marca chilena premium de ropa y accesorios. Essentials contemporáneos con diseño disciplinado.",
   keywords: [
     "ALTU",
     "Altu",

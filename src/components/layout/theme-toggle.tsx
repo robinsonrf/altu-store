@@ -28,7 +28,7 @@ export function ThemeToggle() {
         variant="ghost"
         size="icon"
         className="size-9 rounded-none"
-        aria-label="Theme"
+        aria-label="Tema"
         disabled
       >
         <span className="size-4" />
@@ -44,7 +44,7 @@ export function ThemeToggle() {
       variant="ghost"
       size="icon"
       className="size-9 rounded-none text-muted-foreground transition-opacity duration-500 hover:bg-transparent hover:opacity-70"
-      aria-label={isDark ? "Light mode" : "Dark mode"}
+      aria-label={isDark ? "Activar modo claro" : "Activar modo oscuro"}
       onClick={() => setTheme(isDark ? "light" : "dark")}
     >
       {isDark ? <Sun className="size-[1.05rem]" /> : <Moon className="size-[1.05rem]" />}

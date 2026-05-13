@@ -8,7 +8,7 @@ import { buildPageMetadata } from "@/lib/seo/metadata";
 export const metadata: Metadata = buildPageMetadata({
   title: "Shop",
   description:
-    "ALTU shop — curated essentials. Ready to wire to Supabase or your API.",
+    "Shop de ALTU. Essentials curados, listos para conectar con Supabase.",
   path: "/tienda",
 });
 
@@ -22,7 +22,7 @@ export default function StorePage() {
           Shop
         </span>
         <h1 className="font-heading text-[clamp(2rem,5vw,3rem)] font-normal tracking-[-0.03em]">
-          All pieces
+          Todas las piezas
         </h1>
       </header>
       <ProductGrid products={products} />

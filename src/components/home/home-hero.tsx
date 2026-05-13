@@ -11,42 +11,42 @@ export function HomeHero() {
     >
       <Image
         src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=1920&q=88"
-        alt="Editorial retail space — monochrome interior"
+        alt="Interior editorial monocromático de tienda"
         fill
         priority
         sizes="100vw"
-        className="object-cover object-[center_35%] opacity-[0.92] motion-safe:transition-opacity motion-safe:duration-[1200ms] motion-safe:ease-out"
+        className="object-cover object-[center_32%] opacity-[0.95] motion-safe:transition-opacity motion-safe:duration-[1400ms] motion-safe:ease-out"
       />
 
       {/* Cinematográfico: viñeta + gradiente lateral para lectura editorial */}
-      <div className="pointer-events-none absolute inset-0 bg-neutral-950/45" aria-hidden />
+      <div className="pointer-events-none absolute inset-0 bg-neutral-950/40" aria-hidden />
       <div
-        className="pointer-events-none absolute inset-0 bg-gradient-to-r from-neutral-950/90 via-neutral-950/55 to-transparent sm:via-neutral-950/40"
+        className="pointer-events-none absolute inset-0 bg-gradient-to-r from-neutral-950/92 via-neutral-950/58 to-transparent sm:via-neutral-950/42"
         aria-hidden
       />
       <div
-        className="pointer-events-none absolute inset-0 bg-gradient-to-t from-neutral-950 via-neutral-950/30 to-neutral-950/10"
+        className="pointer-events-none absolute inset-0 bg-gradient-to-t from-neutral-950 via-neutral-950/28 to-neutral-950/8"
         aria-hidden
       />
 
-      <div className="relative z-10 flex min-h-[100svh] flex-col justify-end pb-[clamp(3rem,12vh,7rem)] pt-[clamp(7rem,18vh,10rem)]">
+      <div className="relative z-10 flex min-h-[100svh] flex-col justify-end pb-[clamp(3.5rem,13vh,7.5rem)] pt-[clamp(7rem,17vh,10rem)]">
         <div className="mx-auto w-full max-w-[var(--altu-container,80rem)] px-6 sm:px-10 lg:px-14">
-          <div className="max-w-none lg:grid lg:grid-cols-12 lg:gap-8 lg:gap-x-12">
+          <div className="max-w-none lg:grid lg:grid-cols-12 lg:gap-8 lg:gap-x-14">
             <div
-              className="altu-reveal lg:col-span-7 lg:col-start-1 xl:col-span-6"
-              style={{ animationDelay: "120ms", animationDuration: "1s" }}
+              className="altu-reveal lg:col-span-7 lg:col-start-2 xl:col-span-6"
+              style={{ animationDelay: "140ms", animationDuration: "1.15s" }}
             >
               <h1
                 id="hero-heading"
-                className="font-heading text-[clamp(2.75rem,11vw,6.5rem)] font-normal leading-[0.92] tracking-[-0.03em] text-white"
+                className="font-heading text-[clamp(3rem,11.5vw,7rem)] font-normal leading-[0.9] tracking-[-0.035em] text-white"
               >
-                <span className="block">Movement.</span>
-                <span className="mt-[0.12em] block text-white/92">Discipline.</span>
-                <span className="mt-[0.12em] block text-white/85">Identity.</span>
+                <span className="block">Movimiento.</span>
+                <span className="mt-[0.12em] block text-white/92">Disciplina.</span>
+                <span className="mt-[0.12em] block text-white/85">Identidad.</span>
               </h1>
 
               <p className="mt-10 max-w-[22rem] font-mono text-[0.6875rem] font-medium uppercase tracking-[0.28em] text-white/55 sm:mt-14">
-                Premium essentials built for movement.
+                Essentials premium inspirados en el movimiento.
               </p>
 
               <div className="mt-14 sm:mt-16 lg:mt-20">
@@ -59,7 +59,7 @@ export function HomeHero() {
                     "motion-safe:focus-visible:outline-none motion-safe:focus-visible:ring-1 motion-safe:focus-visible:ring-white/50 motion-safe:focus-visible:ring-offset-4 motion-safe:focus-visible:ring-offset-neutral-950"
                   )}
                 >
-                  Shop Collection
+                  Explorar colección
                 </Link>
               </div>
             </div>

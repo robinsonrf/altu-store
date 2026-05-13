@@ -34,7 +34,7 @@ export function CartDrawer({ className }: CartDrawerProps) {
           "relative inline-flex size-10 items-center justify-center rounded-none text-muted-foreground transition-opacity duration-500 hover:bg-transparent hover:opacity-70",
           className
         )}
-        aria-label={hasItems ? `Bag, ${count} items` : "Open bag"}
+        aria-label={hasItems ? `Bolsa, ${count} productos` : "Abrir bolsa"}
       >
         <ShoppingBag className="size-[1.1rem] stroke-[1.25]" />
         {hasItems ? (
@@ -52,7 +52,7 @@ export function CartDrawer({ className }: CartDrawerProps) {
       >
         <SheetHeader className="border-b border-border/40 px-8 py-8 text-left">
           <SheetTitle className="font-heading text-base font-normal tracking-tight">
-            Bag
+            Bolsa
           </SheetTitle>
           <SheetDescription className="font-mono text-[0.625rem] uppercase tracking-[0.22em] text-muted-foreground">
             {siteConfig.name}
@@ -67,7 +67,7 @@ export function CartDrawer({ className }: CartDrawerProps) {
                 aria-hidden
               />
               <div className="max-w-[220px] space-y-3">
-                <p className="text-sm font-normal text-foreground">Your bag is empty</p>
+                <p className="text-sm font-normal text-foreground">Tu bolsa está vacía</p>
               </div>
               <Link
                 href="/tienda"
@@ -76,7 +76,7 @@ export function CartDrawer({ className }: CartDrawerProps) {
                   "min-w-[180px] rounded-none border-foreground/25 font-mono text-[0.625rem] font-medium uppercase tracking-[0.2em]"
                 )}
               >
-                Shop collection
+                Explorar colección
               </Link>
             </div>
           ) : (
@@ -103,7 +103,7 @@ export function CartDrawer({ className }: CartDrawerProps) {
                 className="w-full rounded-none font-mono text-[0.625rem] font-medium uppercase tracking-[0.2em]"
                 size="lg"
               >
-                Checkout
+                Pagar
               </Button>
             </div>
           </>

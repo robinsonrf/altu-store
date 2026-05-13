@@ -37,10 +37,10 @@ export const featuredCategories: FeaturedCategory[] = [
 ];
 
 export const editorialFeature = {
-  title: "Built for movement.",
+  title: "Construido para el movimiento.",
   description:
-    "Modern essentials inspired by discipline and motion.",
-  cta: { label: "Discover More", href: "/about" },
+    "Essentials modernos inspirados en disciplina y movimiento.",
+  cta: { label: "Descubrir más", href: "/about" },
   imageUrl:
     "https://images.unsplash.com/photo-1512436991641-6745cdb1723f?w=1800&q=85",
   imageAlt: "Textil y composición editorial",

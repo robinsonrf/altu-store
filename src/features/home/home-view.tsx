@@ -7,8 +7,8 @@ import { HomeHero } from "@/components/home/home-hero";
 import { HomeNewsletter } from "@/components/home/home-newsletter";
 
 /** Vista principal ALTU — compone secciones; datos vía capa application/infrastructure. */
-export function HomeView() {
-  const featured = getHomeFeaturedProducts();
+export async function HomeView() {
+  const featured = await getHomeFeaturedProducts();
 
   return (
     <>

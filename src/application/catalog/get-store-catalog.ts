@@ -1,5 +1,6 @@
-import { getAllProducts } from "@/infrastructure/catalog/mock-products";
+import type { ProductFilters } from "@/domain/product";
+import { listProducts } from "@/infrastructure/catalog/catalog-repository";
 
-export function getStoreCatalog() {
-  return getAllProducts();
+export async function getStoreCatalog(filters: ProductFilters = {}) {
+  return listProducts(filters);
 }

@@ -1,1 +1,5 @@
-export { isSupabaseConfigured } from "@/services/supabase";
+export {
+  getSupabaseBrowserClient,
+  getSupabaseServerClient,
+  isSupabaseConfigured,
+} from "@/services/supabase";

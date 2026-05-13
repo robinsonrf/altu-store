@@ -1,5 +1,5 @@
 import { HomeView } from "@/features/home";
 
-export default function Page() {
+export default async function Page() {
   return <HomeView />;
 }

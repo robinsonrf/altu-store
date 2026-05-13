@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 
 import { getStoreCatalog } from "@/application/catalog/get-store-catalog";
-import { ProductGrid } from "@/features/products";
+import { CatalogFilters, ProductGrid } from "@/features/products";
 import { Container } from "@/components/shared/container";
+import { parseStoreFilters } from "@/features/products/application/parse-store-filters";
 import { buildPageMetadata } from "@/lib/seo/metadata";
 
 export const metadata: Metadata = buildPageMetadata({
@@ -12,8 +13,15 @@ export const metadata: Metadata = buildPageMetadata({
   path: "/tienda",
 });
 
-export default function StorePage() {
-  const products = getStoreCatalog();
+type Props = {
+  searchParams: Promise<Record<string, string | string[] | undefined>>;
+};
+
+export default async function StorePage({ searchParams }: Props) {
+  const resolvedSearchParams = await searchParams;
+  const filters = parseStoreFilters(resolvedSearchParams);
+  const products = await getStoreCatalog(filters);
+  const allProducts = await getStoreCatalog();
 
   return (
     <Container className="pb-24 pt-28 sm:pb-32 sm:pt-32 lg:pb-40 lg:pt-36">
@@ -25,6 +33,7 @@ export default function StorePage() {
           Todas las piezas
         </h1>
       </header>
+      <CatalogFilters products={allProducts} currentFilters={filters} />
       <ProductGrid products={products} />
     </Container>
   );

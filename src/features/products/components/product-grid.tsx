@@ -11,7 +11,7 @@ type ProductGridProps = {
 
 export function ProductGrid({
   products,
-  emptyLabel = "Catálogo en preparación.",
+  emptyLabel = "No encontramos productos con esos filtros.",
   className,
 }: ProductGridProps) {
   if (products.length === 0) {

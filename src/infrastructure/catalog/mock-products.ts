@@ -142,10 +142,10 @@ export const mockProducts: Product[] = [
         alt: "Sudadera urbana en look editorial",
       },
     ],
-    sizes: ["S", "M", "L", "XL"],
+    sizes: ["S", "M", "L"],
     colors: [
       { name: "Carbon", hex: "#2A2A2C" },
-      { name: "Off White", hex: "#EAE7E0" },
+      { name: "Arena", hex: "#D7CFC3" },
     ],
     featured: true,
     stock: 11,

@@ -3,9 +3,15 @@ import { cookies } from "next/headers";
 import type { SupabaseClient } from "@supabase/supabase-js";
 
 import { getSupabaseEnv } from "@/services/supabase/config";
+import {
+  altuSupabaseDebugEnvOnce,
+  altuSupabaseDebugServerClientOnce,
+} from "@/services/supabase/debug";
 
 export async function getSupabaseServerClient(): Promise<SupabaseClient> {
+  altuSupabaseDebugEnvOnce();
   const { url, anonKey } = getSupabaseEnv();
+  altuSupabaseDebugServerClientOnce();
   const cookieStore = await cookies();
 
   return createServerClient(url, anonKey, {

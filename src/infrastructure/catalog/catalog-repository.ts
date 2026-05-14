@@ -1,7 +1,12 @@
 import type { Product, ProductFilters } from "@/domain/product";
-import { mockProducts } from "@/infrastructure/catalog/mock-products";
 import { mapProductRecordToDomain, type ProductRecord } from "@/features/products/model/product-mappers";
-import { getSupabaseServerClient, isSupabaseConfigured } from "@/services";
+import { mockProducts } from "@/infrastructure/catalog/mock-products";
+import { getSupabaseCatalogClient, isSupabaseConfigured } from "@/services";
+import {
+  altuSupabaseDebug,
+  altuSupabaseDebugEnvOnce,
+  isAltuSupabaseDebugEnabled,
+} from "@/services/supabase/debug";
 
 function applyMockFilters(products: Product[], filters: ProductFilters): Product[] {
   return products.filter((product) => {
@@ -28,51 +33,105 @@ function applyMockFilters(products: Product[], filters: ProductFilters): Product
 
 export async function listProducts(filters: ProductFilters = {}): Promise<Product[]> {
   if (!isSupabaseConfigured()) {
+    altuSupabaseDebugEnvOnce();
+    altuSupabaseDebug("listProducts: Supabase no configurado → mocks", {
+      isSupabaseConfigured: false,
+      hint: "Define NEXT_PUBLIC_SUPABASE_URL y NEXT_PUBLIC_SUPABASE_ANON_KEY en .env.local y reinicia `next dev`.",
+    });
     return applyMockFilters(mockProducts, filters);
   }
 
-  try {
-    const supabase = await getSupabaseServerClient();
-    const query = supabase
-      .from("products")
-      .select(
-        "id,name,slug,description,short_description,price,category,images,sizes,colors,featured,stock,drop_tag,created_at"
-      )
-      .order("created_at", { ascending: false });
+  altuSupabaseDebugEnvOnce();
+  altuSupabaseDebug("listProducts: usando Supabase (sin fallback a mocks)", {
+    filters,
+    debugMode: isAltuSupabaseDebugEnabled(),
+  });
 
-    if (filters.category) query.eq("category", filters.category);
-    if (filters.featured !== undefined) query.eq("featured", filters.featured);
-    if (filters.drop) query.eq("drop_tag", filters.drop);
-    if (filters.q) query.ilike("name", `%${filters.q}%`);
-    if (filters.size) query.contains("sizes", [filters.size]);
-    if (filters.color) query.contains("colors", [{ name: filters.color }]);
+  const supabase = getSupabaseCatalogClient();
+  const query = supabase
+    .from("products")
+    .select(
+      "id,name,slug,description,short_description,price,category,images,sizes,colors,featured,stock,drop_tag,created_at"
+    )
+    .order("created_at", { ascending: false });
 
-    const { data, error } = await query;
-    if (error) throw error;
-    return (data ?? []).map((record) => mapProductRecordToDomain(record as ProductRecord));
-  } catch {
-    return applyMockFilters(mockProducts, filters);
+  if (filters.category) query.eq("category", filters.category);
+  if (filters.featured !== undefined) query.eq("featured", filters.featured);
+  if (filters.drop) query.eq("drop_tag", filters.drop);
+  if (filters.q) query.ilike("name", `%${filters.q}%`);
+  if (filters.size) query.contains("sizes", [filters.size]);
+  if (filters.color) query.contains("colors", [{ name: filters.color }]);
+
+  const { data, error } = await query;
+  if (error) {
+    altuSupabaseDebug("listProducts: error PostgREST (no se usan mocks)", {
+      message: error.message,
+      code: error.code,
+      details: error.details,
+      hint: error.hint,
+    });
+    throw new Error(
+      `[ALTU catalog] listProducts falló contra Supabase: ${error.message} (code=${error.code ?? "n/a"})`,
+      { cause: error }
+    );
   }
+
+  const rows = data ?? [];
+  altuSupabaseDebug("listProducts: consulta OK", {
+    rowCount: rows.length,
+    source: "supabase",
+    firstSlugs: rows.slice(0, 5).map((r: { slug?: string }) => r.slug),
+  });
+
+  return rows.map((record) => mapProductRecordToDomain(record as ProductRecord));
 }
 
 export async function getProductBySlug(slug: string): Promise<Product | null> {
   if (!isSupabaseConfigured()) {
+    altuSupabaseDebugEnvOnce();
+    altuSupabaseDebug("getProductBySlug: Supabase no configurado → mock local", {
+      slug,
+      isSupabaseConfigured: false,
+    });
     return mockProducts.find((p) => p.slug === slug) ?? null;
   }
 
-  try {
-    const supabase = await getSupabaseServerClient();
-    const { data, error } = await supabase
-      .from("products")
-      .select(
-        "id,name,slug,description,short_description,price,category,images,sizes,colors,featured,stock,drop_tag,created_at"
-      )
-      .eq("slug", slug)
-      .maybeSingle();
+  altuSupabaseDebugEnvOnce();
+  altuSupabaseDebug("getProductBySlug: usando Supabase (sin fallback a mocks)", { slug });
 
-    if (error) throw error;
-    return data ? mapProductRecordToDomain(data as ProductRecord) : null;
-  } catch {
-    return mockProducts.find((p) => p.slug === slug) ?? null;
+  const supabase = getSupabaseCatalogClient();
+  const { data, error } = await supabase
+    .from("products")
+    .select(
+      "id,name,slug,description,short_description,price,category,images,sizes,colors,featured,stock,drop_tag,created_at"
+    )
+    .eq("slug", slug)
+    .maybeSingle();
+
+  if (error) {
+    altuSupabaseDebug("getProductBySlug: error PostgREST (no se usan mocks)", {
+      slug,
+      message: error.message,
+      code: error.code,
+      details: error.details,
+      hint: error.hint,
+    });
+    throw new Error(
+      `[ALTU catalog] getProductBySlug("${slug}") falló contra Supabase: ${error.message} (code=${error.code ?? "n/a"})`,
+      { cause: error }
+    );
   }
+
+  if (!data) {
+    altuSupabaseDebug("getProductBySlug: 0 filas (slug no existe en BD)", { slug });
+    return null;
+  }
+
+  altuSupabaseDebug("getProductBySlug: producto encontrado en BD", {
+    slug,
+    id: (data as { id?: string }).id,
+    source: "supabase",
+  });
+
+  return mapProductRecordToDomain(data as ProductRecord);
 }
